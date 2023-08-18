@@ -3,7 +3,9 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "pyright"
+        "mypy",
+        "pyright",
+        "ruff"
       }
     },
   },
@@ -13,6 +15,14 @@ local plugins = {
     config = function ()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
+    end
+  },
+
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    ft = {"python"},
+    opts = function ()
+      return require "custom.configs.null-ls"
     end
   }
 }
